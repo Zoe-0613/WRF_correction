@@ -24,7 +24,7 @@ class WRFERADataset(Dataset):
         geo_path: str,
         split: str,
         *,
-        stats_path: str = "./data/mean_std_7.npz",
+        stats_path: str = "./data/mean_std.npz",
         train_split: float = 0.8,
         val_split: float = 0.1,
         compute_stats_if_train: bool = False,
