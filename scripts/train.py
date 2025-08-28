@@ -9,7 +9,7 @@ from torch.cuda.amp import autocast, GradScaler
 from src.wrfera.config import get_default_config, Config
 from src.wrfera.data import build_loaders
 from src.wrfera.eval import evaluate
-from src.wrfera.model.ST_UNet import STUNet
+from src.wrfera.model.TS_UNet import TSUNet
 from src.wrfera.utils import EarlyStopping, get_logger, save_checkpoint
 
 def cosine_warmup_lambda(total_epochs=100, warmup_epochs=5):
@@ -40,7 +40,7 @@ def main(args):
     stats = np.load(cfg.data.stats_path)
     target_mean, target_std = stats["mean"], stats["std"]
 
-    model = STUNet(in_ch=11, out_ch=1, base_ch=cfg.model.base_channel).to(device)
+    model = TSUNet(in_ch=11, out_ch=1, base_ch=cfg.model.base_channel).to(device)
     optimizer = optim.AdamW(model.parameters(), lr=cfg.train.lr)
     criterion = nn.L1Loss()
     scaler = GradScaler()

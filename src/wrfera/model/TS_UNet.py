@@ -39,7 +39,7 @@ class Up(nn.Module):
         x1 = F.pad(x1, (dx // 2, dx - dx // 2, dy // 2, dy - dy // 2))
         return self.conv(torch.cat([x2, x1], dim=1))
 
-class ChannelAttention(nn.Module):
+class TemporalAttention(nn.Module):
     def __init__(self, channels: int, attn_drop: float = 0.1) -> None:
         super().__init__()
         self.q = nn.Linear(channels, channels, bias=False)
@@ -122,7 +122,7 @@ class MLP(nn.Module):
         return t.permute(0, 2, 1).view(B, C, H, W)
 
 # --- UNet 主体 ---
-class STUNet(nn.Module):
+class TSUNet(nn.Module):
     """
     输入: history (B, T=24, C=11, H, W), geo (B, H, W)
     输出: (T, 5, H, W) —— 针对第1通道的校正(与你的训练/评估脚本一致)
@@ -137,7 +137,7 @@ class STUNet(nn.Module):
             Up(514, 129), Up(258, 65), Up(130, 32), Up(64, 32)
         ])
         self.chan_attn = nn.ModuleList([
-            ChannelAttention(c) for c in [64, 128, 256, 256]
+            TemporalAttention(c) for c in [64, 128, 256, 256]
         ])
         self.spa_attn = nn.ModuleList([
             SpatialAttention(s, win=win, heads=heads) for s in [65, 129, 257, 257]

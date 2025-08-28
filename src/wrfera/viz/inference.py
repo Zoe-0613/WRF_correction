@@ -6,7 +6,7 @@ import torch
 from torch.utils.data import DataLoader
 
 from src.wrfera.data import WRFERADataset
-from src.wrfera.model.ST_UNet import STUNet
+from src.wrfera.model.TS_UNet import STUNet
 
 
 def _build_loader(split: str,

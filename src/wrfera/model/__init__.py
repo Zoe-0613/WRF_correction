@@ -1,1 +1,1 @@
-from .ST_UNet import STUNet
+from .TS_UNet import TSUNet
