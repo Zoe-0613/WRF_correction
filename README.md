@@ -1,4 +1,4 @@
-# WRF-ERA5 Correction (TS-UNet)
+# WRF-ERA5 Correction (ST-UNet)
 A WRF–ERA5 correction model based on U-Net with spatial and temporal attention.
 The implementation follows the  original logic of data loading, temporal feature engineering, ERA5→WRF bilinear interpolation, and difference-target construction.
 
