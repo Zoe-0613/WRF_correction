@@ -45,3 +45,4 @@ outputs/
 *.rar
 
 !save/wrf_July/best_model.pth.tar
+!save/wrf_July/fig
