@@ -17,7 +17,7 @@ env/
 Thumbs.db
 
 data/
-save/
+save/*
 checkpoints/
 logs/
 outputs/
@@ -43,3 +43,5 @@ outputs/
 *.tar.gz
 *.7z
 *.rar
+
+!save/wrf_July/best_model.pth.tar
