@@ -20,7 +20,7 @@ TS-Unet/
 ## Example Outputs
 **Hourly line plots:** 
 ![Hourly comparison](./save/wrf_July/fig/t2m_comparison_hour.png)
-**Map plots:** 
-![Map](./save/wrf_July/fig/T2M_comparison.png)
+**Spatial distribution maps:** 
+![Spatial distribution comparison](./save/wrf_July/fig/T2M_comparison.png)
 
 
