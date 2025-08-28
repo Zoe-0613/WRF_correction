@@ -46,3 +46,4 @@ outputs/
 
 !save/wrf_July/best_model.pth.tar
 !save/wrf_July/fig
+!save/model.png
