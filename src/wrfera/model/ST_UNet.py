@@ -39,7 +39,6 @@ class Up(nn.Module):
         x1 = F.pad(x1, (dx // 2, dx - dx // 2, dy // 2, dy - dy // 2))
         return self.conv(torch.cat([x2, x1], dim=1))
 
-# --- 注意力与MLP (保留核心思想) ---
 class ChannelAttention(nn.Module):
     def __init__(self, channels: int, attn_drop: float = 0.1) -> None:
         super().__init__()
@@ -125,8 +124,8 @@ class MLP(nn.Module):
 # --- UNet 主体 ---
 class STUNet(nn.Module):
     """
-    输入: history (B, T=24, C=11, H, W), geo (B?, H, W)
-    输出: (T, 1, H, W) —— 针对第1通道的校正(与你的训练/评估脚本一致)
+    输入: history (B, T=24, C=11, H, W), geo (B, H, W)
+    输出: (T, 5, H, W) —— 针对第1通道的校正(与你的训练/评估脚本一致)
     """
     def __init__(self, in_ch: int = 11, out_ch: int = 1,
                  base_ch: int = 32, win: int = 8, heads: int = 4) -> None:
@@ -172,5 +171,5 @@ class STUNet(nn.Module):
         for i, up in enumerate(self.up):
             x = up(x, downs[-(i+2)])
 
-        out = self.outc(x).permute(1, 0, 2, 3)  # (T, 1, H, W)
+        out = self.outc(x).permute(1, 0, 2, 3)  # (T, 5, H, W)
         return out
