@@ -1,0 +1,19 @@
+# Core
+numpy
+pandas
+xarray
+matplotlib
+tqdm
+scikit-learn
+
+# Deep Learning
+torch>=1.10
+
+# Geospatial & plotting
+pillow
+cartopy
+geopandas
+shapely
+pyproj
+fiona
+gdal
