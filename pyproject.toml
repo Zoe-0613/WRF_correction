@@ -1,0 +1,26 @@
+[project]
+name = "WRF-ERA-correction"
+version = "0.1.0"
+description = "WRF–ERA5 correction model (TS-UNet) with spatial and temporal attention"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+  { name = "Zou Yulin", email = "yulinzou0613@gmail.com" }
+]
+
+dependencies = [
+  "numpy",
+  "pandas",
+  "xarray",
+  "matplotlib",
+  "tqdm",
+  "scikit-learn",
+  "torch>=1.10",
+  "cartopy",
+  "geopandas"
+]
+
+[project.urls]
+Homepage = "https://github.com/Zoe-0613/WRF_correction"
+Repository = "https://github.com/Zoe-0613/WRF_correction"
